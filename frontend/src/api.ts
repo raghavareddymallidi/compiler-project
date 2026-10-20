@@ -1,6 +1,9 @@
 import type { CompilationResult, SampleProject } from "./types";
 
-const API_BASE = "http://localhost:8000/api";
+const API_BASE =
+  typeof window !== "undefined" && window.location.port === "5173"
+    ? "http://localhost:8000/api"
+    : "/api";
 
 export async function fetchHealth(): Promise<{ status: string; version: string }> {
   const res = await fetch(`${API_BASE}/health`);

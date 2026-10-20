@@ -197,3 +197,13 @@ def get_dependency_graph(req: CompileRequest):
     compiler = Compiler(level=req.optimization_level)
     result = compiler.compile_virtual(req.files, req.entry_points)
     return result.graph or {}
+
+
+# Mount built frontend assets so http://localhost:8000/ serves the web IDE directly
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+dist_path = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+if dist_path.exists():
+    app.mount("/", StaticFiles(directory=str(dist_path), html=True), name="frontend")
+
