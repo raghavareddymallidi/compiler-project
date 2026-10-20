@@ -1,0 +1,5 @@
+import { fnA } from './a.prune';
+
+export function fnB() {
+    return fnA();
+}

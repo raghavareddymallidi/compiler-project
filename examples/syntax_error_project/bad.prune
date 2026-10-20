@@ -1,0 +1,4 @@
+function broken(x) {
+    const = 42;
+    return x;
+}

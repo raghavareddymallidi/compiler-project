@@ -1,0 +1,13 @@
+export function add(a, b) {
+    return a + b;
+}
+
+// Dead export: should be safely pruned by DCE
+export function deadMultiply(a, b) {
+    return a * b;
+}
+
+// Another unused dead export
+export function deadPower(base, exp) {
+    return base * exp;
+}

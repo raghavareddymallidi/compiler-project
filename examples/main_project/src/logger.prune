@@ -1,0 +1,18 @@
+let logCount = 0;
+
+// Top-level side-effect initialization
+logStatus("Logger subsystem initialized");
+
+export function logStatus(msg) {
+    logCount = logCount + 1;
+    return msg;
+}
+
+export function getLogCount() {
+    return logCount;
+}
+
+// Dead export
+export function deadDumpLogs() {
+    return "All logs dumped";
+}

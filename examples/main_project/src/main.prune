@@ -1,0 +1,19 @@
+import { add } from './math.prune';
+import { logStatus, getLogCount } from './logger.prune';
+import { formatGreeting } from './utils.prune';
+
+// Main application entry point
+export function run(username, baseVal) {
+    logStatus("Starting computation for " + username);
+    const greeting = formatGreeting(username);
+
+    // Constant folding opportunity: 15 + 25 * 2 = 65
+    const multiplier = 15 + 25 * 2;
+
+    // Common Subexpression Elimination (CSE) opportunity:
+    const score1 = baseVal * multiplier;
+    const score2 = baseVal * multiplier;
+
+    const total = add(score1, score2) + getLogCount();
+    return total;
+}
